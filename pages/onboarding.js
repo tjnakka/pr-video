@@ -111,6 +111,7 @@ function StoryViewer(props) {
 				onClick={() => {
 					document.querySelectorAll('.video.active').forEach((elem) => {
 						elem.classList.remove('active');
+						elem.firstChild.pause();
 					});
 					document.querySelector('.video-container').classList.remove('active');
 				}}
@@ -168,10 +169,10 @@ export default function OnBoarding() {
 												className='d-flex mx-auto align-items-center justify-content-center shadow-sm bg-white p-3 rounded-3 border btn'
 												onClick={() => {
 													// Process to open Story viewer.
+													let elem = document.getElementById(`${story.id}_story`);
 													document.querySelector('.video-container').classList.add('active');
-													document
-														.getElementById(`${story.id}_story`)
-														.classList.add('active');
+													elem.classList.add('active');
+													elem.firstChild.play();
 												}}
 											>
 												{story.name}
